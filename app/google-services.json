@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "880892975538",
+    "project_id": "wechat-padc",
+    "storage_bucket": "wechat-padc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880892975538:android:ed8d587906676af7d12cab",
+        "android_client_info": {
+          "package_name": "com.example.wechat_padc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880892975538-p5ktogdgah2g8duhc3n4eqtvsuru2jkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw5DnwQf8xOakog7FgLTPe6_WujswFQKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880892975538-p5ktogdgah2g8duhc3n4eqtvsuru2jkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
