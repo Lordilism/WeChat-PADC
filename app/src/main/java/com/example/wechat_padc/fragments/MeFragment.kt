@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wechat_padc.adapters.MomentsAdapter
+import com.example.wechat_padc.data.VO.UserVO
 import com.example.wechat_padc.databinding.FragmentMeBinding
 import com.example.wechat_padc.dialogs.EditUserDialogFragment
 import com.example.wechat_padc.dialogs.QrDialogFragment
@@ -51,6 +52,8 @@ class MeFragment : Fragment(),MeFragmentView {
     }
 
     private fun setUpListeners() {
+
+
         binding.btnEditProfile.setOnClickListener {
             showEditDialog()
         }
@@ -89,6 +92,16 @@ class MeFragment : Fragment(),MeFragmentView {
 
     override fun uploadImage() {
         Toast.makeText(requireContext(),"upload Image", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showUserData(userVO: UserVO) {
+
+        Toast.makeText(requireContext(),"${userVO.name}, ${userVO.dateOfBirth}",Toast.LENGTH_SHORT).show()
+        binding.tvMyUserName.text = userVO.name.toString()
+        binding.tvMyGender.text = userVO.gender.toString()
+        binding.tvMyDateOfBirth.text = userVO.dateOfBirth.toString()
+
+
     }
 
     override fun showError(message: String) {

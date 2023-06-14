@@ -4,5 +4,5 @@ import com.example.wechat_padc.mvp.view.LogInView
 
 interface LogInPresenter:IBasePresenter {
     fun initView(view: LogInView)
-    fun onTapLogIn()
+    fun onTapLogIn(email:String, password:String)
 }

@@ -22,23 +22,24 @@ object FirebaseAuthManagerImpl : AuthManager {
         onFailure: (String) -> Unit
     ) {
 
-        val user = Firebase.auth.currentUser
+
         mFireBaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful && it.isComplete) {
                 mFireBaseAuth.currentUser?.updateProfile(
                     UserProfileChangeRequest.Builder().setDisplayName(userName).build()
                 )
-
+                val user = Firebase.auth.currentUser
+                val userUID = user?.uid?:""
+                mFireStoreApi.addUser(
+                    email = email,
+                    password = password,
+                    userName = userName,
+                    dateOfBirth = dateOfBirth,
+                    gender = gender,
+                    userUID = userUID,
+                    profile = ""
+                )
                 onSuccess()
-//                mFireStoreApi.addUser(
-//                    email = email,
-//                    password = password,
-//                    userName = userName,
-//                    dateOfBirth = dateOfBirth,
-//                    gender = gender,
-//                    userUID = userUID,
-//                    profile = ""
-//                )
 //                Log.d("test" , "$email $password $userName $dateOfBirth $gender ${userUID}}")
 
 
@@ -48,4 +49,28 @@ object FirebaseAuthManagerImpl : AuthManager {
 
         }
     }
+
+    override fun login(
+        email: String,
+        password: String,
+        onSuccess: () -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mFireBaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+            if (it.isSuccessful && it.isComplete){
+                onSuccess()
+            }else{
+                onFailure(it.exception?.message?: "Failed")
+            }
+        }
+
+    }
+
+    override fun getUserUid(): String {
+        return Firebase.auth.currentUser?.uid.toString()
+
+
+    }
+
+
 }

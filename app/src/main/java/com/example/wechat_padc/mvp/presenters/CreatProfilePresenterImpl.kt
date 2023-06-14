@@ -3,8 +3,8 @@ package com.example.wechat_padc.mvp.presenters
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
-import com.example.wechat_padc.data.VO.Models.AuthenticationModel
-import com.example.wechat_padc.data.VO.Models.AuthenticationModelImpl
+import com.example.wechat_padc.data.Models.AuthenticationModel
+import com.example.wechat_padc.data.Models.AuthenticationModelImpl
 import com.example.wechat_padc.mvp.view.CreatProfileView
 
 class CreatProfilePresenterImpl : CreatProfilePresenter, ViewModel() {

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.wechat_padc.databinding.ActivityLogInBinding
 import com.example.wechat_padc.mvp.presenters.LogInPresenterImpl
 import com.example.wechat_padc.mvp.view.LogInView
+import com.google.android.material.snackbar.Snackbar
 
 class LogInActivity : BaseActivity(),LogInView {
     //view binding
@@ -33,7 +34,9 @@ class LogInActivity : BaseActivity(),LogInView {
 
     private fun setUpListeners() {
         binding.btnLogin.setOnClickListener {
-            navigateToMainScreen()
+            val email = binding.etPhoneNumberLogin.text.toString().trim()
+            val password = binding.etPasswordLogin.text.toString().trim()
+            mPresenter.onTapLogIn(email,password)
         }
     }
 
@@ -47,6 +50,6 @@ class LogInActivity : BaseActivity(),LogInView {
     }
 
     override fun showError(message: String) {
-
+        Snackbar.make(window.decorView,message,Snackbar.LENGTH_SHORT).show()
     }
 }

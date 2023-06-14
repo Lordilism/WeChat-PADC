@@ -1,4 +1,4 @@
-package com.example.wechat_padc.data.VO.Models
+package com.example.wechat_padc.data.Models
 
 import com.example.wechat_padc.network.FireStoreApi
 
