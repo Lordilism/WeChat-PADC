@@ -12,10 +12,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_xlarge"
+            android:layout_marginEnd="@dimen/margin_medium_2"
             android:background="@drawable/bkg_message_for_another_user"
             android:orientation="vertical"
-            android:padding="@dimen/margin_medium">
+            android:padding="@dimen/margin_card_medium">
 
             <TextView
                 android:id="@+id/tvMessageright"
@@ -29,7 +29,7 @@
                 android:id="@+id/tvTimeSent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_card_medium"
                 android:text="12:00 PM"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_smaller" />

@@ -36,6 +36,15 @@
         android:background="@drawable/bkg_message"
         android:orientation="vertical"
         android:padding="@dimen/margin_medium">
+        <TextView
+            android:id="@+id/tvFriendName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:textSize="10dp" />
+
 
         <TextView
             android:id="@+id/tvMessageright"
@@ -49,7 +58,7 @@
             android:id="@+id/tvTimeSent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
             android:text="12:00 PM"
             android:textSize="@dimen/text_smaller" />
 

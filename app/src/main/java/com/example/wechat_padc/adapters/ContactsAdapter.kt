@@ -3,20 +3,20 @@ package com.example.wechat_padc.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wechat_padc.data.VO.ContactsVO
 import com.example.wechat_padc.databinding.ViewholderContactsBinding
+import com.example.wechat_padc.delegates.ContactsDelegate
 import com.example.wechat_padc.viewholders.ContactsViewHolder
 
-class ContactsAdapter(private val contacts: List<String>) :
-    RecyclerView.Adapter<ContactsViewHolder>() {
+class ContactsAdapter(private val delegate:ContactsDelegate) : RecyclerView.Adapter<ContactsViewHolder>() {
+    private var mContactsList = mutableListOf<ContactsVO>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactsViewHolder {
 
         val inflater = LayoutInflater.from(parent.context)
         val binding = ViewholderContactsBinding.inflate(inflater)
-        return ContactsViewHolder(binding.root)
-
-
+        return ContactsViewHolder(binding,delegate)
 
 
     }
@@ -24,16 +24,20 @@ class ContactsAdapter(private val contacts: List<String>) :
 
 
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
+        holder.binData(mContactsList[position])
 
-        holder.binData(contacts[position])
 
     }
 
     override fun getItemCount(): Int {
-        return contacts.count()
+        return mContactsList.count()
     }
 
+    fun setNewData(contactsList: List<ContactsVO>) {
+        mContactsList = contactsList as MutableList<ContactsVO>
+        notifyDataSetChanged()
 
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package com.example.wechat_padc.dialogs
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,8 @@ class QrDialogFragment : DialogFragment() ,QrDialogView{
         return view
 
 
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,9 +49,15 @@ class QrDialogFragment : DialogFragment() ,QrDialogView{
         mPresenter.initView(this)
     }
 
+    override fun bindQr(bitmap: Bitmap) {
+        binding.ivQrDialog.setImageBitmap(bitmap)
+    }
+
     override fun showError(message: String) {
 
     }
+
+
 
 
 }

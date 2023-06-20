@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:scrollbars="none">
+            android:scrollbars="horizontal">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -107,8 +107,11 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSelectedPhotos"
                     android:layout_width="wrap_content"
-                    android:layout_height="130dp"
+                    android:layout_height="100dp"
+                    android:layout_toEndOf="@id/btnSelectPhoto"
                     android:clipToPadding="false"
+                    android:layout_alignBottom="@id/btnSelectPhoto"
+                    android:layout_alignTop="@id/btnSelectPhoto"
                     android:paddingStart="@dimen/margin_medium_2"
                     android:paddingEnd="@dimen/margin_medium" />
 
@@ -118,7 +121,7 @@
                     android:layout_height="130dp"
                     android:layout_marginStart="@dimen/margin_small_n"
                     android:layout_marginEnd="@dimen/margin_medium_2"
-                    android:layout_toEndOf="@id/rvSelectedPhotos"
+                    android:layout_alignParentStart="true"
                     android:src="@drawable/ic_tab" />
 
             </RelativeLayout>

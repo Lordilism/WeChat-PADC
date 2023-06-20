@@ -13,9 +13,9 @@ import com.example.wechat_padc.fragments.*
 class MainScreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainScreenBinding
 
-    companion object{
-        fun newIntent(context:Context): Intent {
-            return Intent(context,MainScreenActivity::class.java)
+    companion object {
+        fun newIntent(context: Context): Intent {
+            return Intent(context, MainScreenActivity::class.java)
         }
     }
 
@@ -53,10 +53,11 @@ class MainScreenActivity : AppCompatActivity() {
                         replace<SettingsFragment>(R.id.fl_container)
                     }
                 }
-                else -> {}
             }
             true
 
         }
+
+        binding.bottomNav.selectedItemId = R.id.action_moment
     }
 }

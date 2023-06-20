@@ -45,9 +45,12 @@
         <entry key="app/src/main/res/layout/viewholder_contacts.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/viewholder_current_user.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/viewholder_group.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/viewholder_group_message.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/viewholder_moments.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/viewholder_moments_photo.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/viewholder_selectable_cotacts.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/viewholder_selected_contacts.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/viewholder_selected_photo.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu_list.xml" value="0.2578125" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.3056640625" />
       </map>

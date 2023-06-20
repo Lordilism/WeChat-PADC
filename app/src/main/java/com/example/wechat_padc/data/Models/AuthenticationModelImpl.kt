@@ -13,6 +13,7 @@ object AuthenticationModelImpl : AuthenticationModel {
         userName: String,
         dateOfBirth: String,
         gender: String,
+        userProfile: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
@@ -23,6 +24,7 @@ object AuthenticationModelImpl : AuthenticationModel {
             userName,
             dateOfBirth,
             gender,
+            userProfile,
             onSuccess,
             onFailure
         )

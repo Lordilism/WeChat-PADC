@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wechat_padc.activities.NewMomentActivity
 import com.example.wechat_padc.adapters.MomentsAdapter
+import com.example.wechat_padc.data.VO.MomentsVO
 import com.example.wechat_padc.databinding.FragmentMomentsBinding
 import com.example.wechat_padc.mvp.presenters.MomentsPresenterImpl
 import com.example.wechat_padc.mvp.view.MomentsView
@@ -21,6 +22,8 @@ class MomentsFragment : Fragment(), MomentsView {
     private lateinit var mMomentsAdapter: MomentsAdapter
     private var _binding: FragmentMomentsBinding? = null
 
+
+
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,7 @@ class MomentsFragment : Fragment(), MomentsView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentMomentsBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -52,7 +56,7 @@ class MomentsFragment : Fragment(), MomentsView {
 
     private fun setUpListeners() {
         binding.btnNewMoment.setOnClickListener {
-            navigateToCreateMoment()
+            mPresenter.onTapCreateMoments()
         }
     }
 
@@ -73,6 +77,12 @@ class MomentsFragment : Fragment(), MomentsView {
 
     override fun navigateToCreateMoment() {
         startActivity(NewMomentActivity.newIntent(requireContext()))
+    }
+
+    override fun showFeed(list: List<MomentsVO>) {
+        mMomentsAdapter.setNewData(list)
+
+
     }
 
     override fun showError(message: String) {

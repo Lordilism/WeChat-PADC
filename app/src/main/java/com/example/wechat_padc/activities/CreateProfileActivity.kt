@@ -1,8 +1,12 @@
 package com.example.wechat_padc.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,6 +16,7 @@ import com.example.wechat_padc.mvp.presenters.CreatProfilePresenterImpl
 import com.example.wechat_padc.mvp.view.CreatProfileView
 import com.example.wechat_padc.utils.day
 import com.example.wechat_padc.utils.yearList
+import com.squareup.picasso.Picasso
 
 class CreateProfileActivity : BaseActivity(), CreatProfileView {
     private lateinit var binding: ActivityCreateProfileBinding
@@ -19,10 +24,23 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
     private lateinit var mPresenter: CreatProfilePresenterImpl
 
     private var mGender: String = "other"
+    private var mUserProfile: String = ""
 
     companion object {
+        const val GALLERY_REQUEST_CODE = 101
         fun newIntent(context: Context): Intent {
             return Intent(context, CreateProfileActivity::class.java)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            val imageUri: Uri? = data.data
+            val inputStream = contentResolver.openInputStream(imageUri!!)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            // Process the selected image URI here
+            mPresenter.uploadImage(bitmap)
         }
     }
 
@@ -151,8 +169,14 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
                 day = binding.spinnerDay.selectedItem.toString(),
                 month = binding.spinnerMonth.selectedItem.toString(),
                 year = binding.spinnerYear.selectedItem.toString(),
-                gender = mGender
+                gender = mGender,
+                userProfile = mUserProfile
+
             )
+        }
+
+        binding.tvUploadProfile.setOnClickListener {
+            mPresenter.onTapProfileUpload()
         }
     }
 
@@ -164,6 +188,20 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
 
     override fun navigateToLogIn() {
         startActivity(LogInActivity.newIntent(this))
+    }
+
+    override fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, GALLERY_REQUEST_CODE)
+    }
+
+    override fun bindImage(url: String) {
+        mUserProfile = url
+        Picasso.get()
+            .load(url)
+            .resize(200,200)
+            .into(binding.ivUserProfile)
+
     }
 
     override fun showError(message: String) {

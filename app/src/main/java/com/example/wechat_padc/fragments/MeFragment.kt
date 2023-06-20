@@ -1,5 +1,6 @@
 package com.example.wechat_padc.fragments
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.wechat_padc.dialogs.EditUserDialogFragment
 import com.example.wechat_padc.dialogs.QrDialogFragment
 import com.example.wechat_padc.mvp.presenters.MeFragmentPresenterImpl
 import com.example.wechat_padc.mvp.view.MeFragmentView
+import com.squareup.picasso.Picasso
 
 class MeFragment : Fragment(),MeFragmentView {
     private lateinit var mBookmarkedAdapter: MomentsAdapter
@@ -55,11 +57,11 @@ class MeFragment : Fragment(),MeFragmentView {
 
 
         binding.btnEditProfile.setOnClickListener {
-            showEditDialog()
+            mPresenter.onTapEdit()
         }
 
         binding.ivMyQrCode.setOnClickListener {
-            showQrDialog()
+            mPresenter.onTapQr()
         }
     }
 
@@ -96,12 +98,20 @@ class MeFragment : Fragment(),MeFragmentView {
 
     override fun showUserData(userVO: UserVO) {
 
-        Toast.makeText(requireContext(),"${userVO.name}, ${userVO.dateOfBirth}",Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(),"${userVO.name}, ${userVO.dateOfBirth}",Toast.LENGTH_SHORT).show()
         binding.tvMyUserName.text = userVO.name.toString()
         binding.tvMyGender.text = userVO.gender.toString()
         binding.tvMyDateOfBirth.text = userVO.dateOfBirth.toString()
+        Picasso.get()
+            .load(userVO.profile)
+            .resize(200, 200)
+            .into(binding.ivMyProfile)
 
 
+    }
+
+    override fun bindQrtoView(bitmat: Bitmap) {
+        binding.ivMyQrCode.setImageBitmap(bitmat)
     }
 
     override fun showError(message: String) {

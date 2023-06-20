@@ -8,6 +8,7 @@ data class UserVO(
     var password:String?= "",
     var profile:String? = "",
     var gender:String? = "",
-    var dateOfBirth:String?= ""
+    var dateOfBirth:String?= "",
+//    var selected: Boolean = false
 
 ):Serializable
