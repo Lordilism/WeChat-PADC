@@ -39,11 +39,11 @@ class MeFragment : Fragment(),MeFragmentView {
     ): View? {
         _binding = FragmentMeBinding.inflate(inflater, container, false)
         val view = binding.root
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        
         setUpPresenter()
         setUpAdapter()
         setUpDialog()
@@ -106,6 +106,8 @@ class MeFragment : Fragment(),MeFragmentView {
             .load(userVO.profile)
             .resize(200, 200)
             .into(binding.ivMyProfile)
+
+        binding.tvMyPhoneNumber.text = userVO.phoneNo
 
 
     }

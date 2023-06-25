@@ -1,6 +1,7 @@
 package com.example.wechat_padc.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wechat_padc.R
 import com.example.wechat_padc.data.VO.ContactsVO
 import com.example.wechat_padc.databinding.ViewholderCheckableContactBinding
 import com.example.wechat_padc.delegates.SelectedContactsDelegate
@@ -19,7 +20,21 @@ class CheckableContactViewHolder(
     init {
 
         itemBinding.root.setOnClickListener {
-            delegate.onTapContacts(mContatsVo!!)
+            mContatsVo?.let {
+                if (mContatsVo?.isSelected == false){
+                    itemBinding.ivCheckContact.setImageResource(R.drawable.ic_checked)
+                    it.isSelected = true
+                    delegate.onTapContacts(it)
+                }else{
+                    itemBinding.ivCheckContact.setImageDrawable(null)
+                    it.isSelected = false
+                    delegate.onTapContacts(it)
+                }
+            }
+
+
+
+
 
 
         }

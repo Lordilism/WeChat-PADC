@@ -19,6 +19,7 @@ object FirebaseAuthManagerImpl : AuthManager {
         dateOfBirth: String,
         gender: String,
         userProfile: String,
+        phoneNumber: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
@@ -38,7 +39,8 @@ object FirebaseAuthManagerImpl : AuthManager {
                     dateOfBirth = dateOfBirth,
                     gender = gender,
                     userUID = userUID,
-                    profile = userProfile
+                    profile = userProfile,
+                    phoneNumber=phoneNumber
                 )
                 onSuccess()
 //                Log.d("test" , "$email $password $userName $dateOfBirth $gender ${userUID}}")

@@ -8,7 +8,9 @@ interface NewGroupView:BaseView {
     fun createGroup()
     fun deleteAllTextFromField()
     fun showContactsList(listContactsVO: List<ContactsVO>)
-    fun showSelectedContactList(selectedContactList: ContactsVO)
+    fun showSelectedContactList(selectedContact: ContactsVO)
     fun showUserData(userUID: String)
+    fun openGallery()
+    fun showGroupLogo(logoUrl: String)
 
 }

@@ -25,7 +25,8 @@ object UserModelImpl : UserModel {
         dateOfBirth: String,
         gender: String,
         userUID: String,
-        profile: String
+        profile: String,
+        phoneNumber: String
     ) {
         mFirestoreApi.addUser(
             email = email,
@@ -34,7 +35,8 @@ object UserModelImpl : UserModel {
             dateOfBirth,
             gender,
             userUID,
-            profile
+            profile,
+            phoneNumber
         )
     }
 
@@ -196,6 +198,7 @@ object UserModelImpl : UserModel {
     }
 
     override fun creatGroup(
+        groupLogo: String,
         groupName: String,
         mCurrentUserId: String,
         members: MutableList<String>,
@@ -206,7 +209,7 @@ object UserModelImpl : UserModel {
         val allMember = mutableListOf<String>()
         allMember.add(mCurrentUserId)
         allMember.addAll(members)
-        mRealtimeApi.creatGroup(groupName, allMember,timeStamp, onSuccess, onFailure)
+        mRealtimeApi.creatGroup(groupLogo,groupName, allMember,timeStamp, onSuccess, onFailure)
     }
 
     override fun getGroups(onSuccess: (List<GroupVO>) -> Unit, onFailure: (String) -> Unit) {
@@ -239,5 +242,22 @@ object UserModelImpl : UserModel {
         onFailure: (String) -> Unit
     ) {
         mRealtimeApi.getGroupInfo(groupID,onSucces,onFailure)
+    }
+
+    override fun getLatestMessage(
+        userUID: String,
+        onSuccess: (List<String>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mRealtimeApi.getLatestMessage(userUID,onSuccess,onFailure)
+    }
+
+    override fun getMessagesOfContact(
+        mCurrentUserUid: String,
+        messagedContactID: String,
+        onSuccess: (List<MessageVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mRealtimeApi.getMessagesOfContacts(mCurrentUserUid,messagedContactID,onSuccess,onFailure)
     }
 }

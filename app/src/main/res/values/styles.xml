@@ -14,14 +14,15 @@
     <style name="TextAppearance">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_heading_1x</item>
-        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">@font/serif</item>
     </style>
 
     <style name="AppCompatCaptureTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-
     </style>
+
+
 
 
 </resources>

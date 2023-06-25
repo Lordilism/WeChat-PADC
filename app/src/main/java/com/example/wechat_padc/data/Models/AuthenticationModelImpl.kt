@@ -14,6 +14,7 @@ object AuthenticationModelImpl : AuthenticationModel {
         dateOfBirth: String,
         gender: String,
         userProfile: String,
+        phoneNumber: String,
         onSuccess: () -> Unit,
         onFailure: (String) -> Unit
     ) {
@@ -25,6 +26,7 @@ object AuthenticationModelImpl : AuthenticationModel {
             dateOfBirth,
             gender,
             userProfile,
+            phoneNumber,
             onSuccess,
             onFailure
         )

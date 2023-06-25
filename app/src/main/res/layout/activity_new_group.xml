@@ -50,108 +50,161 @@
 
     </RelativeLayout>
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:layout_marginEnd="@dimen/margin_medium_2"
-        android:layout_marginBottom="@dimen/margin_small_n"
-        android:text="Group Name"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_regular_2x" />
+        android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivLogin"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginEnd="@dimen/margin_medium_2"
-        android:layout_marginBottom="@dimen/margin_medium_2">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etGroupName"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:fontFamily="serif"
-            android:singleLine="true"
-            android:textSize="@dimen/text_regular_2x" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp"
+            android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewSearch"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginEnd="@dimen/margin_medium_2"
-        app:cardCornerRadius="@dimen/margin_card_medium">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-        <RelativeLayout
-            android:id="@+id/rlSearch"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_search_bar">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_medium_2"
+                    android:layout_weight="3.5"
+                    app:cardCornerRadius="60dp"
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnSearchContact"
+                    app:cardElevation="@dimen/margin_small">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivInsertLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:padding="@dimen/margin_card_medium"
+                        android:src="@drawable/ic_baseline_add_photo_alternate_accent_24dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium_2"
+                    android:layout_weight="6">
+
+                    <TextView
+                        android:id="@+id/tvGroupName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group Name"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_regular_2x" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvGroupName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etGroupName"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="serif"
+                            android:singleLine="true"
+                            android:textColorHint="@color/colorAccent"
+                            android:textSize="@dimen/text_regular_2x" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSearch"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                app:cardCornerRadius="@dimen/margin_card_medium">
+
+                <RelativeLayout
+                    android:id="@+id/rlSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_search_bar">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/btnSearchContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/margin_medium_2"
+                        android:src="@drawable/ic_baseline_search_accent_24" />
+
+                    <EditText
+                        android:id="@+id/tvSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_toStartOf="@id/ivClear"
+                        android:layout_toEndOf="@id/btnSearchContact"
+                        android:background="@android:color/transparent"
+                        android:text="@string/lbl_search"
+                        android:textColor="@color/colorSecondaryText"
+                        android:textSize="@dimen/text_regular_2x" />
+
+                    <ImageView
+                        android:id="@+id/ivClear"
+                        android:layout_width="@dimen/margin_xlarge"
+                        android:layout_height="@dimen/margin_xlarge"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/margin_medium_2"
+                        android:padding="@dimen/margin_small"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_baseline_close_accent_24" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSelectedContactsNewGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingBottom="@dimen/margin_medium_2" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/margin_medium_2"
-                android:src="@drawable/ic_baseline_search_accent_24" />
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginBottom="@dimen/margin_medium_2"
+                android:text="@string/lbl_contacts"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/tvSearch"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCheckableContactsNewGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:layout_toStartOf="@id/ivClear"
-                android:layout_toEndOf="@id/btnSearchContact"
-                android:background="@android:color/transparent"
-                android:text="@string/lbl_search"
-                android:textColor="@color/colorSecondaryText"
-                android:textSize="@dimen/text_regular_2x" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginEnd="@dimen/margin_medium_2" />
 
-            <ImageView
-                android:id="@+id/ivClear"
-                android:layout_width="@dimen/margin_xlarge"
-                android:layout_height="@dimen/margin_xlarge"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/margin_medium_2"
-                android:padding="@dimen/margin_small"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_baseline_close_accent_24" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSelectedContactsNewGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_medium_2"
-        android:paddingStart="@dimen/margin_medium"
-        android:paddingBottom="@dimen/margin_medium_2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginBottom="@dimen/margin_medium_2"
-        android:text="@string/lbl_contacts"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_regular_2x"
-        android:textStyle="bold" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCheckableContactsNewGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium_2"
-        android:layout_marginEnd="@dimen/margin_medium_2" />
 
 </LinearLayout>

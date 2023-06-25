@@ -12,20 +12,27 @@
         android:layout_marginStart="@dimen/margin_medium_2"
         android:layout_marginEnd="@dimen/margin_medium_2">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivProfileMoments"
-            android:layout_width="@dimen/margin_xxlarge"
-            android:layout_height="@dimen/margin_xxlarge"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile_pic"
-            app:cornerRadius="@dimen/margin_large" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ivProfileCardMoments"
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="24dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivProfileMoments"
+                android:layout_width="@dimen/margin_xxlarge"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile_demo"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvUserNameMoments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
-            android:layout_toEndOf="@id/ivProfileMoments"
+            android:layout_toEndOf="@id/ivProfileCardMoments"
             android:text="Michael"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_regular_2x"
@@ -37,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvUserNameMoments"
             android:layout_marginStart="@dimen/margin_medium"
-            android:layout_toEndOf="@id/ivProfileMoments"
+            android:layout_toEndOf="@id/ivProfileCardMoments"
             android:text="15 min ago" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -57,25 +64,26 @@
         android:layout_marginEnd="@dimen/margin_medium_2"
         android:layout_marginBottom="@dimen/margin_medium"
         android:text="Nice !"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold" />
+        android:textColor="@color/colorAccent"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMomentPhotos"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:paddingStart="@dimen/margin_medium_2" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium_2">
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginVertical="@dimen/margin_medium">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btnLike"
             android:layout_width="@dimen/margin_large"
             android:layout_height="@dimen/margin_large"
+            android:layout_centerVertical="true"
             android:src="@drawable/ic_heart" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -85,6 +93,7 @@
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/btnLike"
+            android:layout_centerVertical="true"
             android:text="10"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
@@ -93,6 +102,7 @@
             android:id="@+id/btnBookmark"
             android:layout_width="@dimen/margin_large"
             android:layout_height="@dimen/margin_large"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_bookmarks" />
 
@@ -103,13 +113,14 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_toStartOf="@id/btnBookmark"
+            android:layout_centerVertical="true"
             android:text="2"
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/margin_large"
-            android:layout_height="@dimen/margin_large"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="@dimen/margin_small"
             android:layout_toStartOf="@id/tvCommentCount"
             android:scaleType="centerCrop"

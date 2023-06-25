@@ -15,7 +15,7 @@ class SignUpPresenterImpl:ViewModel(),SignUpPresenter {
     }
 
     override fun onTapSignInViaEmail() {
-        mView?.navigateToCreateProfileWithEmail()
+
     }
 
     override fun onTapGetOTP() {

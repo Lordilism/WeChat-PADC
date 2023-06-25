@@ -14,7 +14,8 @@ interface UserModel {
         dateOfBirth: String,
         gender: String,
         userUID: String,
-        profile: String
+        profile: String,
+        phoneNumber:String
     )
 
     fun addMoment(
@@ -55,9 +56,12 @@ interface UserModel {
     fun getUserData(userUID: String, onSuccess: (UserVO) -> Unit, onFailure: (String) -> Unit)
 
     fun getMessages(userUID: String,receiverUID:String,onSuccess:(MutableList<MessageVO>)->Unit, onFailure: (String)->Unit)
-    fun creatGroup(groupName: String, mCurrentUserId: String, members: MutableList<String>,timeStamp:Long,onSuccess: () -> Unit,onFailure: (String) -> Unit)
+    fun creatGroup(groupLogo:String,groupName: String, mCurrentUserId: String, members: MutableList<String>,timeStamp:Long,onSuccess: () -> Unit,onFailure: (String) -> Unit)
     fun getGroups(onSuccess:(List<GroupVO>)->Unit,onFailure: (String) -> Unit)
     fun sendTextGroup(vo: MessageVO, groupID: String,onSuccess: () -> Unit,onFailure: (String) -> Unit)
     fun getMesssagesGroup(groupId:String,onSuccess: (List<MessageVO>) -> Unit, onFailure: (String) -> Unit)
     fun getGroupInfo(groupID: String, onSucces: (GroupVO) -> Unit, onFailure: (String) -> Unit)
+    fun getLatestMessage(userUID: String,onSuccess: (List<String>) -> Unit,onFailure: (String) -> Unit)
+    fun getMessagesOfContact(mCurrentUserUid: String, messagedContactID: String,onSuccess: (List<MessageVO>) -> Unit,onFailure: (String) -> Unit)
+
 }

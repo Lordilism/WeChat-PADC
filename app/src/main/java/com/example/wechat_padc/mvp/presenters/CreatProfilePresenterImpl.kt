@@ -27,7 +27,8 @@ class CreatProfilePresenterImpl : CreatProfilePresenter, ViewModel() {
         month: String,
         year: String,
         gender: String,
-        userProfile: String
+        userProfile: String,
+        phoneNumber: String
     ) {
         val monthInNumber = monthInMapping[month]
         val dateOfBirth = "$day/${monthInNumber}/$year"
@@ -38,6 +39,7 @@ class CreatProfilePresenterImpl : CreatProfilePresenter, ViewModel() {
             dateOfBirth = dateOfBirth,
             gender = gender,
             userProfile = userProfile,
+            phoneNumber = phoneNumber,
             onSuccess = {
                 mView?.navigateToLogIn()
             },

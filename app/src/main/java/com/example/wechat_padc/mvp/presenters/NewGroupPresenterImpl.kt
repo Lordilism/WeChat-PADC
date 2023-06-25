@@ -1,5 +1,6 @@
 package com.example.wechat_padc.mvp.presenters
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import com.example.wechat_padc.data.Models.AuthenticationModel
@@ -24,6 +25,7 @@ class NewGroupPresenterImpl:NewGroupPresenter, ViewModel() {
     }
 
     override fun onTapCreate(
+        groupLogo: String,
         groupName: String,
         mSelectedContactsList: MutableList<ContactsVO>,
         mCurrentUserId: String,
@@ -34,7 +36,7 @@ class NewGroupPresenterImpl:NewGroupPresenter, ViewModel() {
             members.add(it.userUID!!)
         }
 
-        mUserModel.creatGroup(groupName,mCurrentUserId,members,timeStamp,
+        mUserModel.creatGroup(groupLogo,groupName,mCurrentUserId,members,timeStamp,
         onSuccess = {
            mView?.createGroup()
         },
@@ -45,6 +47,21 @@ class NewGroupPresenterImpl:NewGroupPresenter, ViewModel() {
 
     override fun onTapTextDelete() {
        mView?.deleteAllTextFromField()
+    }
+
+    override fun onTapLogoImage() {
+        mView?.openGallery()
+    }
+
+    override fun uploadImageFromGallery(uri: Bitmap) {
+
+        mUserModel.uploadImage(uri, onSuccess = {
+            mView?.showGroupLogo(it)
+        },
+        onFailure = {
+            mView?.showError(it)
+        })
+
     }
 
     override fun onUiReady(owner: LifecycleOwner) {

@@ -28,7 +28,7 @@
                 android:elevation="2dp">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btnNewMoment"
+                    android:id="@+id/btnSearchContact"
                     android:layout_width="@dimen/margin_medium_3"
                     android:layout_height="@dimen/margin_medium_3"
                     android:layout_gravity="center"
@@ -38,10 +38,12 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolBar"
+                style="@style/TextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/margin_small"
                 app:title="@string/lbl_chats"
+                app:titleTextAppearance="@style/TextAppearance"
                 app:titleTextColor="@color/colorAccent" />
 
         </RelativeLayout>

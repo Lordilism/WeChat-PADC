@@ -9,7 +9,7 @@ data class ContactsVO(
     var email:String?="",
     var dateOfBirth:String?="",
     var userUID:String?= "",
-    var isSelected:Boolean = false
+    var isSelected:Boolean?= false
 
 ):Serializable {
 }

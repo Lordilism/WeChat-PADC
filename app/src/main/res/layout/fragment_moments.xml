@@ -16,19 +16,24 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btnNewMoment"
-                android:layout_width="@dimen/margin_xlarge"
-                android:layout_height="@dimen/margin_xlarge"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/margin_medium_2"
                 android:layout_marginBottom="@dimen/margin_small"
-                android:elevation="2dp"
-                android:src="@drawable/ic_add_moment"
-                app:cornerRadius="@dimen/margin_medium" />
+                app:cardElevation="@dimen/margin_medium"
+                app:cardCornerRadius="8dp"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnNewMoment"
+                    android:layout_width="@dimen/margin_xlarge"
+                    android:layout_height="@dimen/margin_xlarge"
+
+                    android:src="@drawable/ic_add_moment"/>
+
+            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -37,6 +42,7 @@
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/margin_small"
                 app:title="@string/lbl_moments"
+                app:titleTextAppearance="@style/TextAppearance"
                 app:titleTextColor="@color/colorAccent" />
 
         </RelativeLayout>

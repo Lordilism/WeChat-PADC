@@ -163,6 +163,8 @@ class ContactsFragment : Fragment(), AlphabetClickListener, ContactsView {
 
     override fun showGroup(listVO: MutableList<GroupVO>) {
         mGroupAdapter.setNewData(listVO)
+
+        binding.tvGroupsCount.text = "Groups(${listVO.count()})"
     }
 
     override fun navigateToChatActivityFromGroup(groupID: String) {

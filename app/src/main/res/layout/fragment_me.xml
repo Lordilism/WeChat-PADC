@@ -43,6 +43,7 @@
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/margin_small"
                 app:title="Me"
+                app:titleTextAppearance="@style/TextAppearance"
                 app:titleTextColor="@color/colorAccent" />
 
         </RelativeLayout>

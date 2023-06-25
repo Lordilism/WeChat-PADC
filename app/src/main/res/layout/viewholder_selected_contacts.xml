@@ -6,29 +6,37 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="140dp"
         android:layout_marginStart="@dimen/margin_medium"
         app:cardCornerRadius="@dimen/margin_medium"
-        android:elevation="0dp">
+        app:cardElevation="@dimen/margin_card_medium"
+        app:cardUseCompatPadding="true">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivSelectedContactProfile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_horizontal"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="@dimen/margin_medium_2"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_group"
-            app:cornerRadius="@dimen/margin_xxlarge" />
+            app:cardCornerRadius="35dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSelectedContactProfile"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile_demo" />
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
             android:id="@+id/tvSelectedContactName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_card_medium_2"
             android:layout_gravity="center_horizontal|bottom"
-            android:textColor="@color/black"
-            android:text="Name"/>
+            android:text="Name"
+            android:layout_marginBottom="@dimen/margin_card_medium"
+            android:textColor="@color/black" />
 
     </androidx.cardview.widget.CardView>
 

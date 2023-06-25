@@ -84,10 +84,10 @@ class ChatPresenterImpl : ChatPresenter, ViewModel() {
         })
 
         mUserModel.getGroupInfo(groupID,onSucces={
-
+            mView?.showGroupInfo(it)
         },
         onFailure={
-
+            mView?.showError(it)
         })
 
 

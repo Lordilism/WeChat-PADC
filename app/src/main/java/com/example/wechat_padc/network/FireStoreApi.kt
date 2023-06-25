@@ -13,7 +13,8 @@ interface FireStoreApi {
         dateOfBirth: String,
         gender: String,
         userUID: String,
-        profile: String
+        profile: String,
+        phoneNumber:String
     )
 
     fun getUserData(userUID:String, onSuccess:(UserVO)-> Unit, onFailure:(String)->Unit )

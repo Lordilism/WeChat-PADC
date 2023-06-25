@@ -92,6 +92,7 @@ object RealTimeDatabaseImpl : RealTimeAPi {
     }
 
     override fun creatGroup(
+        groupLogo: String,
         groupName: String,
         members: MutableList<String>,
         timeStamp: Long,
@@ -100,7 +101,7 @@ object RealTimeDatabaseImpl : RealTimeAPi {
     ) {
         database.child("groups")
             .child(timeStamp.toString())
-            .setValue(GroupVO(groupName, timeStamp, members))
+            .setValue(GroupVO(timeStamp,groupLogo,groupName , members))
             .addOnCompleteListener {
                 onSuccess()
             }
@@ -186,10 +187,69 @@ object RealTimeDatabaseImpl : RealTimeAPi {
         onSucces: (GroupVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        database.child("group")
+        database.child("groups")
             .child(groupID)
             .get()
+            .addOnSuccessListener {
+                it.getValue(GroupVO::class.java)?.let(onSucces)
+            }
+            .addOnFailureListener {
+                onFailure(it.message?:"")
+            }
 
+    }
+
+    override fun getLatestMessage(
+        userUID: String,
+        onSuccess: (List<String>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        database.child("contactsAndMessages")
+            .child(userUID)
+            .addValueEventListener(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val contactList = arrayListOf<String>()
+                    snapshot.children.forEach { dataSnapshot ->
+                        dataSnapshot.key?.let {
+                            contactList.add(it)
+                        }
+                        onSuccess(contactList)
+
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onFailure(error.message)
+                }
+
+            })
+    }
+
+    override fun getMessagesOfContacts(
+        mCurrentUserUid: String,
+        messagedContactID: String,
+        onSuccess: (List<MessageVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        database.child("contactsAndMessages")
+            .child(mCurrentUserUid)
+            .child(messagedContactID)
+            .addValueEventListener(object :ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val messageList = arrayListOf<MessageVO>()
+                    snapshot.children.forEach { dataSnapshot ->
+                        dataSnapshot.getValue(MessageVO::class.java)?.let {
+                            messageList.add(it)
+                        }
+                    }
+                    onSuccess(messageList)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    onFailure(error.message)
+                }
+
+            })
     }
 
 }

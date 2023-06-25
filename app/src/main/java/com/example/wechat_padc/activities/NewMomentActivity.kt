@@ -115,7 +115,7 @@ class NewMomentActivity : BaseActivity(), NewMomentView {
 
     override fun showDialogForPhoto() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Which One")
+        builder.setTitle("Select an action.")
         builder.setItems(options) { dialog, item ->
             when (item) {
                 0 -> mPresenter.onTapTakeFromCamera()

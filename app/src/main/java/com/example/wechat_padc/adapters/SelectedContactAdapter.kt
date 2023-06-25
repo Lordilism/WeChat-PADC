@@ -1,5 +1,6 @@
 package com.example.wechat_padc.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.example.wechat_padc.databinding.ViewholderSelectedContactsBinding
 import com.example.wechat_padc.viewholders.SelectedContactsViewHolder
 
 class SelectedContactAdapter: RecyclerView.Adapter<SelectedContactsViewHolder>() {
-    private var mSelectedContacts = mutableListOf<ContactsVO>()
+    private var mSelectedContacts = listOf<ContactsVO>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectedContactsViewHolder {
         val itemBinding =
             ViewholderSelectedContactsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,10 +22,11 @@ class SelectedContactAdapter: RecyclerView.Adapter<SelectedContactsViewHolder>()
     }
 
     override fun getItemCount(): Int {
-        return mSelectedContacts.count()
+        return mSelectedContacts.size
     }
 
-    fun setNewData(selectedContactsList:MutableList<ContactsVO>){
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewData(selectedContactsList:List<ContactsVO>){
         mSelectedContacts = selectedContactsList
         notifyDataSetChanged()
     }

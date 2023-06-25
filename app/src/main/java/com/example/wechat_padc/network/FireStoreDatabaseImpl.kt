@@ -24,7 +24,8 @@ object FireStoreDatabaseImpl : FireStoreApi {
         dateOfBirth: String,
         gender: String,
         userUID: String,
-        profile: String
+        profile: String,
+        phoneNumber: String
     ) {
         val map = hashMapOf(
             "userUID" to userUID,
@@ -33,7 +34,8 @@ object FireStoreDatabaseImpl : FireStoreApi {
             "password" to password,
             "dateOfBirth" to dateOfBirth,
             "gender" to gender,
-            "profile" to profile
+            "profile" to profile,
+            "phoneNo" to phoneNumber
 
         )
 
@@ -62,6 +64,7 @@ object FireStoreDatabaseImpl : FireStoreApi {
                 user.dateOfBirth = data["dateOfBirth"] as String
                 user.password = data["password"] as String
                 user.profile = data["profile"] as String
+                user.phoneNo = data["phoneNo"] as String
 
                 onSuccess(user)
             }

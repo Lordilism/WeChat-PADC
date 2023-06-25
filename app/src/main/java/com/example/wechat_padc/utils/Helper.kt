@@ -2,6 +2,7 @@ package com.example.wechat_padc.utils
 
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 fun convertMillisTo12HourFormat(millis: Long): String {
     val calendar = Calendar.getInstance()
@@ -26,4 +27,20 @@ fun convertMillisTo12HourFormat(millis: Long): String {
         "November" to 11,
         "December" to 12
     )
+
+fun convertTimeToRelativeFormat(timeMillis: Long): String {
+    val currentTimeMillis = System.currentTimeMillis()
+    val diffMillis = currentTimeMillis - timeMillis
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(diffMillis)
+    val hours = TimeUnit.MILLISECONDS.toHours(diffMillis)
+
+    return if (minutes.toInt() == 0){
+        "Just now"
+    }else if (minutes <60){
+        "$minutes min ago"
+    }else{
+        "$hours hour ago"
+    }
+
+}
 

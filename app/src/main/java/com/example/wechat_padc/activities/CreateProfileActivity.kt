@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
+import com.example.wechat_padc.R
 import com.example.wechat_padc.databinding.ActivityCreateProfileBinding
 import com.example.wechat_padc.mvp.presenters.CreatProfilePresenterImpl
 import com.example.wechat_padc.mvp.view.CreatProfileView
@@ -23,13 +24,21 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
 
     private lateinit var mPresenter: CreatProfilePresenterImpl
 
+    private lateinit var phoneNumber:String
+    private lateinit var email:String
+
     private var mGender: String = "other"
     private var mUserProfile: String = ""
 
     companion object {
+        const val IE_EMAIL = "IE_EMAIL"
+        const val IE_PHONE_NO = "IE_PHONE_NO"
         const val GALLERY_REQUEST_CODE = 101
-        fun newIntent(context: Context): Intent {
-            return Intent(context, CreateProfileActivity::class.java)
+        fun newIntent(context: Context,email:String, userPhoneNo:String): Intent {
+            val intent = Intent(context, CreateProfileActivity::class.java)
+            intent.putExtra(IE_EMAIL,email)
+            intent.putExtra(IE_PHONE_NO,userPhoneNo)
+            return intent
         }
     }
 
@@ -49,6 +58,9 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
         binding = ActivityCreateProfileBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        phoneNumber = intent.getStringExtra(IE_PHONE_NO).toString()    //phoneNumber From SignUp
+        email = intent.getStringExtra(IE_EMAIL).toString()              // email from signUp
 
         setUpPresenter()
         setUpRadioButtons()
@@ -136,41 +148,49 @@ class CreateProfileActivity : BaseActivity(), CreatProfileView {
     }
 
     private fun setUpListeners() {
-
+        binding.btnSignUpFinish.setBackgroundResource(R.drawable.bkg_button_nclick)
 //        if (binding.cbAgreeToTermAndService.isChecked) {
 //            if (
 //                binding.etNameSignUp.text.toString().trim().isNotEmpty() &&
-//                binding.edtEmailSignUp.text.toString().trim().isNotEmpty() &&
+////                binding.edtEmailSignUp.text.toString().trim().isNotEmpty() &&
 //                binding.etPasswordSignUp.text.toString().trim().isNotEmpty() &&
 //                binding.spinnerDay.selectedItem.toString() != "Day" &&
 //                binding.spinnerMonth.selectedItem.toString() != "Month" &&
 //                binding.spinnerYear.selectedItem.toString() != "Year"
 //            ) {
-//                binding.btnSignUpFinish.background =
-//                    ContextCompat.getDrawable(this, R.drawable.background_button_log_in)
+//                binding.btnSignUpFinish.setBackgroundResource(R.drawable.background_button_log_in)
+////                    ContextCompat.getDrawable(this, R.drawable.background_button_log_in)
+//
+//
 //
 //                binding.btnSignUpFinish.setOnClickListener {
 //
 //                }
 //            } else {
-//                binding.btnSignUpFinish.background =
-//                    ContextCompat.getDrawable(this, R.drawable.bkg_button_nclick)
+//                binding.btnSignUpFinish.setBackgroundResource(R.drawable.bkg_button_nclick)
+////                binding.btnSignUpFinish.background =
+////                    ContextCompat.getDrawable(this, R.drawable.bkg_button_nclick)
+////                binding.btnSignUpFinish.invalidate()
 //            }
 //        } else {
-//            binding.btnSignUpFinish.background =
-//                ContextCompat.getDrawable(this, R.drawable.bkg_button_nclick)
+//            binding.btnSignUpFinish.setBackgroundResource(R.drawable.bkg_button_nclick)
+//
+////            binding.btnSignUpFinish.background =
+////                ContextCompat.getDrawable(this, R.drawable.bkg_button_nclick)
 //
 //        }
+
         binding.btnSignUpFinish.setOnClickListener {
             mPresenter.onTapSignUp(
-                email = binding.edtEmailSignUp.text.toString().trim(),
+                email = email,
                 name = binding.etNameSignUp.text.toString().trim(),
                 password = binding.etPasswordSignUp.text.toString().trim(),
                 day = binding.spinnerDay.selectedItem.toString(),
                 month = binding.spinnerMonth.selectedItem.toString(),
                 year = binding.spinnerYear.selectedItem.toString(),
                 gender = mGender,
-                userProfile = mUserProfile
+                userProfile = mUserProfile,
+                phoneNumber = phoneNumber
 
             )
         }

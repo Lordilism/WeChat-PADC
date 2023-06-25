@@ -54,16 +54,22 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivProfileNewMoments"
-            android:layout_width="@dimen/margin_xxlarge"
-            android:layout_height="@dimen/margin_xxlarge"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/ivProfileNewMomentsCard"
+            android:layout_width="wrap_content"
             android:layout_marginStart="@dimen/margin_medium_2"
             android:layout_marginTop="@dimen/margin_medium_3"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile_pic"
-            app:cornerRadius="@dimen/margin_large" />
+            app:cardCornerRadius="24dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivProfileNewMoments"
+                android:layout_width="@dimen/margin_xxlarge"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_profile_demo" />
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
             android:id="@+id/tvUserNameNewMoments"
@@ -71,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium_2"
             android:layout_marginTop="@dimen/margin_large"
-            android:layout_toEndOf="@id/ivProfileNewMoments"
+            android:layout_toEndOf="@id/ivProfileNewMomentsCard"
             android:text="Lamelo"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/text_regular_2x"
@@ -82,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/horizontal_scroll_view"
-            android:layout_below="@id/ivProfileNewMoments"
+            android:layout_below="@id/ivProfileNewMomentsCard"
             android:layout_marginStart="@dimen/margin_medium_2"
             android:layout_marginTop="@dimen/margin_medium_2"
             android:layout_marginEnd="@dimen/margin_medium_2"
@@ -102,26 +108,26 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium_2"
                 android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSelectedPhotos"
                     android:layout_width="wrap_content"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/btnSelectPhoto"
                     android:clipToPadding="false"
-                    android:layout_alignBottom="@id/btnSelectPhoto"
-                    android:layout_alignTop="@id/btnSelectPhoto"
                     android:paddingStart="@dimen/margin_medium_2"
                     android:paddingEnd="@dimen/margin_medium" />
 
                 <ImageView
                     android:id="@+id/btnSelectPhoto"
                     android:layout_width="100dp"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="@dimen/margin_small_n"
-                    android:layout_marginEnd="@dimen/margin_medium_2"
+                    android:layout_height="100dp"
                     android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/margin_small"
                     android:src="@drawable/ic_tab" />
 
             </RelativeLayout>

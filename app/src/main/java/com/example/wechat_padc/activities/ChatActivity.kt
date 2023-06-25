@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wechat_padc.adapters.GroupMessageAdapter
 import com.example.wechat_padc.adapters.MessageAdapter
+import com.example.wechat_padc.data.VO.GroupVO
 import com.example.wechat_padc.data.VO.MessageVO
 import com.example.wechat_padc.data.VO.UserVO
 import com.example.wechat_padc.databinding.ActivityChatBinding
@@ -171,6 +172,13 @@ class ChatActivity : AppCompatActivity(), ChatView {
     override fun showMessages(listMessageVO: MutableList<MessageVO>) {
         mMessageAdapter.setNewData(listMessageVO)
 
+    }
+
+    override fun showGroupInfo(groupVO: GroupVO) {
+        Picasso.get()
+            .load(groupVO.groupLogo)
+            .into(binding.ivFriendProfile)
+        binding.tvFriendName.text = groupVO.groupName
     }
 
 
